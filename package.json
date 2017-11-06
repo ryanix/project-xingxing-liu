@@ -25,14 +25,14 @@
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "http": "0.0.0",
-    "mongoose": "^4.11.4",
+    "mongoose": "^4.13.0",
     "parse-glob": "^3.0.4",
     "path": "^0.12.7",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.1",
+    "@angular/cli": "^1.4.4",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "~2.5.53",
