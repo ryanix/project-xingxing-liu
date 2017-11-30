@@ -3,7 +3,7 @@
  */
 
 // Get the dependencies
-
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -40,10 +40,11 @@ app.set('port', port);
 // Create HTTP server
 const server = http.createServer(app);
 
-var serverSide = require("./server/test-mongodb/app");
-serverSide(app);
-
-require('./todo/app')(app);
+// var serverSide = require("./server/test-mongodb/app");
+// serverSide(app);
+//
+// require('./todo/app')(app);
+require('./server/app')(app);
 
 // For Build: Catch all other routes and return the index file -- BUILDING
 app.get('*', function (req, res) {
@@ -53,3 +54,4 @@ app.get('*', function (req, res) {
 server.listen( port , () => console.log('Running'));
 
 
+// mlab heroku mongodb://<dbuser>:<dbpassword>@ds121896.mlab.com:21896/heroku_clkksqf0

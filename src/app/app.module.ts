@@ -14,6 +14,7 @@ import { TodoEditComponent } from './todo-list/todo-edit.component';
 import {TodoService} from './services/todo.service.client';
 import { WebsiteListComponent } from './components/website/website-list/website-list.component';
 import {WebsiteService} from './services/website.service.client';
+import {OmdbServiceClient} from './services/omdb.service.client';
 
 @NgModule({
   // Declare components here
@@ -33,7 +34,7 @@ import {WebsiteService} from './services/website.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, TodoService, WebsiteService ],
+  providers: [ TestService, TodoService, WebsiteService, OmdbServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

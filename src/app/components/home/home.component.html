@@ -1,19 +1,45 @@
 
-<div class="container">
+<div class="container" ngForm="hah" name="f">
 
-  <h1>
-    Angular 4 MEAN stack app
-  </h1>
+  <div>
+    <label for="1">Search By title</label>
+    <input [(ngModel)]="title" type="text" id="1" name="1"/>
+    <button (click)="search1()">Search</button>
+  </div>
+
+  <div>
+    <label for="2">Search By Id</label>
+    <input [(ngModel)]="id" type="text" id="2" name="2"/>
+    <button (click)="search2()">Search</button>
+  </div>
+
+  <!--<div>-->
+    <!--<label for="3">Search Poster By title</label>-->
+    <!--<input [(ngModel)]="title1" type="text" id="3" name="3"/>-->
+    <!--<button (click)="search3()">Search</button>-->
+  <!--</div>-->
+
+  <!--<div>-->
+    <!--<label for="4">Search Poster By Id</label>-->
+    <!--<input [(ngModel)]="id1" type="text" id="4" name="4"/>-->
+    <!--<button (click)="search4()">Search</button>-->
+  <!--</div>-->
+
+  <div *ngIf="result && !movie" ngModel name="result" ngDefaultControl>
+    <div *ngFor="let r of result">
+      <div class="col-xs-4" (click)="searchAfterClick(r.imdbID)">
+        <label>Title: {{r.Title}}</label>
+        <label>year: {{r.year}}</label>
+        <label>imdbID: {{r.imdbID}}</label>
+        <label>Type: {{r.Type}}</label>
+        <img *ngIf="r.Poster != 'N/A'" [src]='r.Poster' with="100%"/>
+      </div>
+    </div>
+  </div>
 
 
-  <h3>
-    App works
-  </h3>
-
-
-  <h4>
-    <a href="test">Test MongoDB</a>
-  </h4>
+  <div *ngFor="let key of keys">
+    index: {{key}}, value: {{movie[key]}}
+  </div>
 
 </div>
-
