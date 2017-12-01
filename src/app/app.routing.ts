@@ -11,7 +11,7 @@ import {TodoListComponent} from './todo-list/todo-list.component';
 import {WebsiteListComponent} from './components/website/website-list/website-list.component';
 
 const APP_ROUTES: Routes = [
-  {path: '', component : HomeComponent},
+  {path: 'apitest', component : HomeComponent},
   {path: 'todo', component : TodoComponent},
   {path: 'todoList', component : TodoListComponent},
   {path: 'test', component: TestComponent},
