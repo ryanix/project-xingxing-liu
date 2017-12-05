@@ -14,6 +14,14 @@ export class OmdbServiceClient {
     private http: Http,
   ) {}
 
+  searchByTitleForNextPage(search, page) {
+    const title = search + '&page=' + page;
+    return this.http.post( baseUrl + '/movie/searchByName', {searchTerm: title})
+      .map((res: Response) => {
+        return res.json();
+    });
+  }
+
   searchByTitle(title) {
     return this.http.post(baseUrl + '/movie/searchByName', {searchTerm: title})
       .map((res: Response) => {

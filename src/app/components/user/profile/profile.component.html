@@ -1,0 +1,57 @@
+<div class="navbar navbar-default bg-info text-white">
+  <a routerLink=""><i class="fa fa-arrow-left"></i></a>
+  <label>Profile</label>
+</div>
+<div class="container" *ngIf="user">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    Update Failed! Please try again later.
+  </div>
+  <div *ngIf="sucFlag"
+       class="alert alert-success">
+    Update Succeed!
+  </div>
+  <form (ngSubmit) = "update()" #f="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" placeholder="walice">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="email address" name="email" [(ngModel)]="user.email">
+    </div>
+
+
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" class="form-control" placeholder="123-345-5678">
+    </div>
+
+    <div class="form-group">
+      <label for="date">First Name</label>
+      <input disabled [ngModel]="user.dateCreated | date: 'MM/dd/yyyy HH:mm:ss'" name="date" type="text" class="form-control" id="date">
+    </div>
+
+
+    <p> </p>
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Update</button>
+    <p> </p>
+    <a class="btn btn-primary btn-block"
+       routerLink='/user/{{user?._id}}/website'>Collections</a>
+  </form>
+  <p></p>
+  <button class="btn btn-danger btn-block" (click)="logout()">Logout</button>
+</div>

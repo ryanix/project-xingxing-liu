@@ -1,0 +1,8 @@
+<div *ngIf="keys">
+  <img [src]="movieDetail.Poster" class="img-fluid">
+  <table class="table-striped table-light table-hover">
+    <tr *ngFor="let key of keys">
+      {{key}} : {{movieDetail[key]}}
+    </tr>
+  </table>
+</div>

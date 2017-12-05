@@ -1,0 +1,106 @@
+<div class="navbar navbar-default bg-info text-white">
+  <a routerLink=""><i class="fa fa-arrow-left"></i></a>
+  <label>Administrator</label>
+</div>
+<div>
+  <div id="accordion" role="tablist">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Profile
+          </a>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-body">
+          <form (ngSubmit) = "update()" #f="ngForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" placeholder="walice">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="email address" name="email" [(ngModel)]="user.email">
+            </div>
+
+
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+            </div>
+
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" class="form-control" placeholder="123-345-5678">
+            </div>
+
+            <div class="form-group">
+              <label for="date">First Name</label>
+              <input disabled [ngModel]="user.dateCreated | date: 'MM/dd/yyyy HH:mm:ss'" name="date" type="text" class="form-control" id="date">
+            </div>
+
+
+            <p> </p>
+            <button class="btn btn-primary btn-block"
+                    type="submit"
+                    [disabled]="!f.valid">Update</button>
+            <p> </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            UserList
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" role="tab" id="headingThree">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Collection List
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" role="tab" id="headingFour">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Review List
+          </a>
+        </h5>
+      </div>
+      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

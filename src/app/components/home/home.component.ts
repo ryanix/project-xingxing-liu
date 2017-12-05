@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  searchAfterClick(id){
+  searchAfterClick(id) {
     this.id = id;
     this.search2();
   }
