@@ -25,6 +25,7 @@ export class UserServiceClient {
     'adminLoggedIn': this.adminLoggedIn,
     'loggedIn': this.loggedIn,
     'logout': this.logout,
+    'findAllUsers': this.findAllUsers,
     'updateUser': this.updateUser,
     'deleteUser': this.deleteUser,
   };
@@ -117,6 +118,17 @@ export class UserServiceClient {
   deleteUser(userId) {
     const url = this.baseUrl + '/api/user/' + userId;
     return this.http.delete(url)
+      .map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      );
+  }
+
+  findAllUsers() {
+    const url = this.baseUrl + '/api/users';
+    return this.http.get(url)
       .map(
         (res: Response) => {
           const data = res.json();

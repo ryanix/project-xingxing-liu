@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 var UserSchema = mongoose.Schema({
   username: String,
-  favirates: [{type: mongoose.Schema.Types.ObjectId, ref: 'favirate'}],
-  friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
+  favirates: [{type: mongoose.Schema.Types.ObjectId, ref: 'FavirateModel'}],
+  friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}],
   password: String,
   firstName: String,
   lastName: String,

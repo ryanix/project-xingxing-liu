@@ -1,5 +1,10 @@
+<div class="navbar-default navbar bg-info text-white">
+  <a class="fa fa-arrow-left fa-2x" style="color: white" routerLink="/"></a>
+  <app-navbar></app-navbar>
+</div>
+
 <div *ngIf="result" class="row">
-  <div *ngFor="let r of result"  class="col-md-4 col-lg-4" >
+  <div *ngFor="let r of result"  class="col-md-4 col-lg-4 movie_item" >
     <ul>
       <li>Title: {{r.Title}}</li>
       <li>year: {{r.Year}}</li>
@@ -7,7 +12,40 @@
       <li>Type: {{r.Type}}</li>
     </ul>
     <div>
-      <img routerLink="/searchDetail/{{r.imdbID}}" *ngIf="r.Poster != 'N/A'" [src]='r.Poster' with="100%"/>
+      <img routerLink="/searchDetail/{{r.imdbID}}/{{title}}" *ngIf="r.Poster != 'N/A'" [src]='r.Poster' with="100%"/>
     </div>
   </div>
+</div>
+
+<div class="text-xs-center">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" (click)="searchOnPageNumber(page-1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(1)">1</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(2)">2</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(3)">3</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(4)">4</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(5)">5</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(6)">6</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(7)">7</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(8)">8</a></li>
+    <li class="page-item"><a class="page-link" (click)="searchOnPageNumber(9)">9</a></li>
+    <li class="page-item">
+      <a class="page-link" (click)="searchOnPageNumber(page+1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!result">
+  <div class="container vertical-center justify-content-between">
+    <h3>There is no matching records.</h3>
+  </div>
+
 </div>

@@ -39,3 +39,4 @@ function deleteUser(userId) {
 function finduserByFacebookId(facebookId) {
   return UserModel.findOne({'facebook.id': facebookId});
 }
+

@@ -68,7 +68,11 @@
       </div>
       <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+          <ul>
+            <li *ngFor="let user of userList">
+             <label>{{user.username}}</label>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

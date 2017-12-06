@@ -20,6 +20,11 @@ import {UserServiceClient} from './services/user.service.client';
 import {AuthGuard} from './services/auth-guard.service';
 import { AdminComponent } from './components/user/admin/admin.component';
 import {AdminGuard} from './services/admin-guard.service';
+import { UserDetailComponent } from './components/user/admin/user-detail/user-detail.component';
+import { NavbarComponent } from './components/user/navbar/navbar.component';
+import { ControlBarComponent } from './components/movie/control-bar/control-bar.component';
+import {CollectionServiceClient} from './services/collection.service.client';
+import { MaterialComponent } from './components/movie/material/material.component';
 
 @NgModule({
   // Declare components here
@@ -33,7 +38,11 @@ import {AdminGuard} from './services/admin-guard.service';
     RegisterComponent,
     MovieListComponent,
     MovieDetailComponent,
-    AdminComponent
+    AdminComponent,
+    UserDetailComponent,
+    NavbarComponent,
+    ControlBarComponent,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,7 @@ import {AdminGuard} from './services/admin-guard.service';
     OmdbServiceClient,
     SharedService,
     UserServiceClient,
+    CollectionServiceClient,
     AuthGuard,
     AdminGuard
   ],

@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 var MaterialSchema = mongoose.Schema({
   title: String,
-  movieId: {type: mongoose.Schema.Types.ObjectId, ref: 'movie'},
-  userId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+  movieId: {type: mongoose.Schema.Types.ObjectId, ref: 'MovieModel'},
+  userId: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
   content: String,
   video: String,
   audio: String,

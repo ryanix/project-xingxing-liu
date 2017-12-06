@@ -22,7 +22,7 @@ const APP_ROUTES: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'administrator', component: AdminComponent, canActivate: [AuthGuard]},
   {path: 'searchResults/:title', component: MovieListComponent},
-  {path: 'searchDetail/:id', component: MovieDetailComponent},
+  {path: 'searchDetail/:id/:title', component: MovieDetailComponent},
   {path: 'apitest', component : HomeComponent},
   {path: 'test', component: TestComponent},
 ];

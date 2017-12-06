@@ -1,24 +1,27 @@
 var mongoose = require('mongoose')
 var MovieSchema = require('./movie.schema.server')
-var MovieModel = mongoose.model('Movie', MovieSchema)
+var MovieModel = mongoose.model('MovieModel', MovieSchema)
 
 MovieModel.createMovie = createMovie;
-MovieModel.findById = findById;
+MovieModel.findByMId = findByMId;
 MovieModel.findByName = findByName;
 MovieModel.findByMovieId = findByMovieId;
-MovieModel.findByUserId = findByUserId;
 MovieModel.updateMovie = updateMovie;
 MovieModel.deleteMovie = deleteMovie;
 
-module.exports(MovieModel)
+module.exports = MovieModel
 
 
 function createMovie(m) {
   return MovieModel.create(m);
 }
 
-function findById(id) {
+function findByMId(id) {
   return MovieModel.findById(id);
+}
+
+function findByMovieId(id) {
+  return MovieModel.findOne({omdbId: id})
 }
 
 function findByomdbId(id) {

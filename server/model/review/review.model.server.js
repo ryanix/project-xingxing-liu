@@ -1,23 +1,23 @@
 var mongoose = require('mongoose')
 var ReviewSchema = require('./review.schema.server')
-var ReviewModel = mongoose.model('Review', ReviewSchema)
+var ReviewModel = mongoose.model('ReviewModel', ReviewSchema)
 
 ReviewModel.createReview = createReview;
-ReviewModel.findById = findById;
+ReviewModel.findByrId = findByrId;
 ReviewModel.findByName = findByName;
 ReviewModel.findByMovieId = findByMovieId;
 ReviewModel.findByUserId = findByUserId;
 ReviewModel.updateReview = updateReview;
 ReviewModel.deleteReview = deleteReview;
 
-module.exports(ReviewModel)
+module.exports = ReviewModel
 
 
 function createReview(m) {
   return ReviewModel.create(m);
 }
 
-function findById(id) {
+function findByrId(id) {
   return ReviewModel.findById(id);
 }
 

@@ -1,0 +1,71 @@
+<div class="container-fluid btn-group justify-content-center" *ngIf="user">
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#collection" (click)="fetchCollections()">Add To Collections</button>
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#material">Add Material</button>
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#review">Add Review</button>
+</div>
+
+<div class="container-fluid btn-group justify-content-center" *ngIf="!user">
+  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#alert">Add To Collections</button>
+  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#alert">Add Material</button>
+  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#alert">Add Review</button>
+</div>
+
+<div>
+
+  <div class="modal fade bd-example-modal-lg" id="collection" tabindex="-1" role="dialog"
+       aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content movie_item">
+        <div class="d-flex flex-column container-fluid">
+          <div class="row justify-content-between align-items-center">
+            <i class="fa fa-folder"></i>
+            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">New Collection</a>
+          </div>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <input [(ngModel)]="name" placeholder="Collection Name"/>
+              <p></p>
+              <button class="btn btn-primary" (click)="creatCollection()">Create New Collection</button>
+            </div>
+          </div>
+          <div class="row justify-content-between align-items-center" *ngFor="let c of collection">
+            <i class="fa fa-folder"></i>
+            <div class="btn-group">
+              <a class="btn btn-outline-primary" (click)="addToCollection(c)">{{c.name}}</a>
+              <a class="btn btn-outline-danger" (click)="deleteCollection(c)">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="material"
+       aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content movie_item">
+        material
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="review"
+       aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content movie_item">
+        review
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="alert"
+       aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content movie_item">
+        Please Login first.
+      </div>
+    </div>
+  </div>
+</div>

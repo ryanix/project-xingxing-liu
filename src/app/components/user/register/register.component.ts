@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
           nuser['email'] = this.email;
           nuser['phone'] = this.phone;
           nuser['dateCreated'] = new Date();
-          console.log(nuser)
           this.userService.register(nuser)
             .subscribe( (nu) => {
               if (nu) {

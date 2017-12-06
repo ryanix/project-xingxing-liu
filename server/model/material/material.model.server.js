@@ -1,23 +1,23 @@
 var mongoose = require('mongoose')
 var MaterialSchema = require('./material.schema.server')
-var MaterialModel = mongoose.model('Material', MaterialSchema)
+var MaterialModel = mongoose.model('MaterialModel', MaterialSchema)
 
 MaterialModel.createMaterial = createMaterial;
-MaterialModel.findById = findById;
+MaterialModel.findBymId = findBymId;
 MaterialModel.findByName = findByName;
 MaterialModel.findByMovieId = findByMovieId;
 MaterialModel.findByUserId = findByUserId;
 MaterialModel.updateMaterial = updateMaterial;
 MaterialModel.deleteMaterial = deleteMaterial;
 
-module.exports(MaterialModel)
+module.exports = MaterialModel
 
 
 function createMaterial(m) {
   return MaterialModel.create(m);
 }
 
-function findById(id) {
+function findBymId(id) {
   return MaterialModel.findById(id);
 }
 

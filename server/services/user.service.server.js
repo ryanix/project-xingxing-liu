@@ -21,6 +21,9 @@ module.exports = function (app) {
   app.post('/api/findUserByName', findUserByName);
   app.post('/api/loggedIn', loggedIn);
   app.post('/api/logout', logout);
+  app.put('/api/user/:userId', updateUser);
+  app.delete('/api/user/:userId', deleteUser);
+  app.get('/api/users', findAllUsers);
   app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
@@ -123,18 +126,33 @@ module.exports = function (app) {
       })
   }
 
-  function createUserFromFacebook(token, profile) {
-    data = profile._json;
-    user = {};
-    user.username = data.email;
-    user.email = data.email;
-    user.dateCreated = new Date();
-    user.facebook = {}
-    user.facebook.id = data.id;
-    user.facebook.token = token;
-    [f,l] = data.name.split(' ');
-    user.firstName = f
-    user.lastName = l
-    return user
+  function updateUser(req, res) {
+    var user = req.body;
+    var userId = req.params['userId'];
+    userModel.updateUser(userId, user)
+      .then(function (user) {
+        if(user){
+          res.json(user)
+        }else{
+          res.json({})
+        }
+      })
   }
+
+  function deleteUser(req, res) {
+    var user = req.body;
+    var userId = req.params['userId'];
+    userModel.deleteUser(userId)
+      .then(function (user) {
+        res.json(user)
+      })
+  }
+
+  function findAllUsers(req, res) {
+    userModel.find({})
+      .then((users) => {
+        res.json(users)
+      })
+  }
+
 }
