@@ -1,7 +1,7 @@
 <div class="container-fluid btn-group justify-content-center" *ngIf="user">
-  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#collection" (click)="fetchCollections()">Add To Collections</button>
-  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#material">Add Material</button>
-  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#review">Add Review</button>
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#collection" >Add To Collections</button>
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#material" >Add Material</button>
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#review" >Add Review</button>
 </div>
 
 <div class="container-fluid btn-group justify-content-center" *ngIf="!user">
@@ -45,7 +45,31 @@
        aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content movie_item">
-        material
+        <form (submit)="updateMaterial()" *ngIf="material" #material="ngForm" class="container-fluid">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Title" [(ngModel)]="movie.Title">
+          </div>
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea rows="5" type="text" name="content" class="form-control" id="content" placeholder="Content" [(ngModel)]="materialContent"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="video">Video Link</label>
+            <input type="url" class="form-control" name="video" id="video" placeholder="Video Link" [(ngModel)]="materialVideo">
+          </div>
+          <div class="form-group">
+            <label for="audio">Audio Link</label>
+            <input type="url" class="form-control" id="audio" name="audio" placeholder="Audio Link" [(ngModel)]="materialAudio">
+          </div>
+          <div class="form-group">
+            <label for="text">Text</label>
+            <textarea type="text" class="form-control" id="text" name="text" placeholder="Text" [(ngModel)]="materialText"></textarea>
+          </div>
+          <div class="container-fluid btn-group">
+            <button class="btn btn-block btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -55,7 +79,19 @@
        aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content movie_item">
-        review
+        <form (submit)="updateReview()" *ngIf="review" #review="ngForm" class="container-fluid">
+          <div class="form-group">
+            <label for="title1">Title</label>
+            <input type="text" class="form-control" name="title1" id="title1" placeholder="Title" [(ngModel)]="movie.Title">
+          </div>
+          <div class="form-group">
+            <label for="content1">Content</label>
+            <textarea rows="5" type="text" class="form-control" name="content1" id="content1" placeholder="Content" [(ngModel)]="reviewContent"></textarea>
+          </div>
+          <div class="container-fluid btn-group">
+            <button class="btn btn-block btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

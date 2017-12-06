@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
   }
 
   search2() {
-    console.log(this.id)
     this.omdbService.searchById(this.id)
       .subscribe((u) => {
         this.movie = u;

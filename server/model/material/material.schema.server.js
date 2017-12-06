@@ -11,4 +11,4 @@ var MaterialSchema = mongoose.Schema({
   dateCreated: Date,
 }, {collection: 'material'})
 
-module.export=MaterialSchema
+module.exports=MaterialSchema

@@ -8,9 +8,31 @@ MovieModel.findByName = findByName;
 MovieModel.findByMovieId = findByMovieId;
 MovieModel.updateMovie = updateMovie;
 MovieModel.deleteMovie = deleteMovie;
+MovieModel.addMaterial = addMaterial;
+MovieModel.addReview = addReview;
+
 
 module.exports = MovieModel
 
+function addReview(review) {
+  return MovieModel.findByMId(review.movieId)
+    .then( u => {
+      if(!u.review.includes(material._id)) {
+        u.review.push(material._id);
+      }
+      return u.save();
+    })
+}
+
+function addMaterial(material) {
+  return MovieModel.findByMId(material.movieId)
+    .then( u => {
+      if(!u.materials.includes(material._id)) {
+        u.materials.push(material._id);
+      }
+      return u.save();
+    })
+}
 
 function createMovie(m) {
   return MovieModel.create(m);

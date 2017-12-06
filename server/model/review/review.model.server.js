@@ -9,9 +9,13 @@ ReviewModel.findByMovieId = findByMovieId;
 ReviewModel.findByUserId = findByUserId;
 ReviewModel.updateReview = updateReview;
 ReviewModel.deleteReview = deleteReview;
+ReviewModel.findByUMId = findByUMId;
 
 module.exports = ReviewModel
 
+function findByUMId(uid, mid) {
+  return ReviewModel.findOne({userId: uid, movieId: mid})
+}
 
 function createReview(m) {
   return ReviewModel.create(m);

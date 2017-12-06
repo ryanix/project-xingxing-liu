@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf="result" class="row">
-  <div *ngFor="let r of result"  class="col-md-4 col-lg-4 movie_item" >
+  <div *ngFor="let r of result"  class="col-md-4 col-lg-4 movie_item" routerLink="/searchDetail/{{r.imdbID}}/{{title}}">
     <ul>
       <li>Title: {{r.Title}}</li>
       <li>year: {{r.Year}}</li>
@@ -12,7 +12,7 @@
       <li>Type: {{r.Type}}</li>
     </ul>
     <div>
-      <img routerLink="/searchDetail/{{r.imdbID}}/{{title}}" *ngIf="r.Poster != 'N/A'" [src]='r.Poster' with="100%"/>
+      <img *ngIf="r.Poster != 'N/A'" [src]='r.Poster' with="100%"/>
     </div>
   </div>
 </div>

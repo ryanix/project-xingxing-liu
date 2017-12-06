@@ -50,39 +50,15 @@ function findAllCollections(id) {
 }
 
 function addMovieToCollection(movie, cid) {
-  return movieModel.findByMovieId(movie.imdbID)
+  return findByFId(cid)
     .then(
       result => {
-        if (result) {
-          return findByFId(cid)
-            .then(
-              c => {
-                c.movies.push(result._id)
-                return c.save()
-              }
-            )
-        } else {
-          return addNewMovieToCollection(movie, cid)
+        if (!result.movies.include(movie._id)){
+          result.movies.push(movie._id)
         }
+        return result.save()
       }
     )
 }
 
-function addNewMovieToCollection(movie, cid) {
-  const newM = {}
-  newM['name'] = movie.Title
-  newM['omdbId'] = movie.imdbID
-  newM['dateCreated'] = new Date()
-  movieModel.createMovie(newM)
-    .then(
-      r => {
-        FavirateModel.findById(cid)
-          .then(
-            c => {
-              c.movies.push(r._id)
-              return c.save()
-            }
-          )
-      }
-    )
-}
+

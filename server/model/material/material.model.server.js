@@ -7,11 +7,15 @@ MaterialModel.findBymId = findBymId;
 MaterialModel.findByName = findByName;
 MaterialModel.findByMovieId = findByMovieId;
 MaterialModel.findByUserId = findByUserId;
+MaterialModel.findByUMId = findByUMId;
 MaterialModel.updateMaterial = updateMaterial;
 MaterialModel.deleteMaterial = deleteMaterial;
 
 module.exports = MaterialModel
 
+function findByUMId(uid, mid){
+  return MaterialModel.findOne({movieId: mid, userId: uid})
+}
 
 function createMaterial(m) {
   return MaterialModel.create(m);

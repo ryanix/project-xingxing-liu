@@ -25,6 +25,9 @@ import { NavbarComponent } from './components/user/navbar/navbar.component';
 import { ControlBarComponent } from './components/movie/control-bar/control-bar.component';
 import {CollectionServiceClient} from './services/collection.service.client';
 import { MaterialComponent } from './components/movie/material/material.component';
+import {MovieServiceClient} from './services/movie.service.client';
+import {MaterialServiceClient} from './services/material.service.client';
+import {ReviewServiceClient} from './services/review.service.client';
 
 @NgModule({
   // Declare components here
@@ -57,6 +60,9 @@ import { MaterialComponent } from './components/movie/material/material.componen
     SharedService,
     UserServiceClient,
     CollectionServiceClient,
+    MovieServiceClient,
+    MaterialServiceClient,
+    ReviewServiceClient,
     AuthGuard,
     AdminGuard
   ],

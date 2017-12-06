@@ -1,26 +1,43 @@
 module.exports = function (app) {
   var movieModel = require('../model/movie/movie.model.server');
 
-  app.post('/movie/create', createMovie);
+  app.post('/movie/findOrCreate', findOrCreate);
   app.post('/movie/addMaterial', addMaterialToMovie);
   app.post('/movie/addReview', addReviewToMovie);
 
 
-  function createMovie(req, res) {
+  function findOrCreate(req, res) {
     const movie = req.body;
-    movieModel.createMovie(movie)
+    movieModel.findByMovieId(movie.omdbId)
       .then(
         m => {
-          res.json(m)
+          if (m) {
+            res.json(m);
+          } else {
+            movieModel.createMovie(movie)
+              .then(
+                result => {
+                  res.json(result);
+                }
+              )
+          }
         }
-      )
+      );
   }
 
-  function addMaterialToMovie() {
-
+  function addMaterialToMovie(req, res) {
+    const material = req.body;
+    movieModel.addMaterial(material)
+      .then(
+        m => {
+          res.json(m);
+          }
+      );
   }
 
   function addReviewToMovie() {
-
+    const review = req.body;
+    movieModel.addReview(review)
+      .then( m => res.json(m))
   }
 }

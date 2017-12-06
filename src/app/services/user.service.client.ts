@@ -55,7 +55,6 @@ export class UserServiceClient {
   }
 
   register(user) {
-    console.log(user);
     this.options.withCredentials = true;
     return this.http.post( this.baseUrl + '/api/register', user, this.options)
       .map((res: Response) => {
