@@ -16,6 +16,7 @@ export class ReviewServiceClient {
   api = {
     'findOrCreate': this.findOrCreate,
     'updateReview': this.updateReview,
+    'findAllReviewByMovieId': this.findAllReviewByMovieId,
   };
 
   findOrCreate(review) {
@@ -35,4 +36,13 @@ export class ReviewServiceClient {
         return res.json();
       });
   }
+
+  findAllReviewByMovieId(id) {
+    const url = this.baseUrl + '/review/findAllReviewByMovieId/' + id;
+    return this.http.get(url)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
 }

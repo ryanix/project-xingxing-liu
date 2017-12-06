@@ -5,7 +5,7 @@ module.exports = function (app) {
 
   app.post('/review/findOrCreate', findOrCreate);
   app.put('/review/updateReview', updateReview);
-
+  app.get('/review/findAllReviewByMovieId/:mid', findAllReviewByMovieId);
 
   function findOrCreate(req, res) {
     const review = req.body;
@@ -29,6 +29,12 @@ module.exports = function (app) {
   function updateReview(req, res) {
     const review = req.body;
     reviewModel.updateReview(review._id, review)
+      .then( result => res.json(result))
+  }
+
+  function findAllReviewByMovieId(req, res) {
+    const id = req.params['mid'];
+    reviewModel.findByMovieId(id)
       .then( result => res.json(result))
   }
 

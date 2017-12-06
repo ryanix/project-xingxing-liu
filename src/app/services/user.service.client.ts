@@ -26,6 +26,7 @@ export class UserServiceClient {
     'loggedIn': this.loggedIn,
     'logout': this.logout,
     'findAllUsers': this.findAllUsers,
+    'addAsFriend': this.addAsFriend,
     'updateUser': this.updateUser,
     'deleteUser': this.deleteUser,
   };
@@ -132,6 +133,16 @@ export class UserServiceClient {
         (res: Response) => {
           const data = res.json();
           return data;
+        }
+      );
+  }
+
+  addAsFriend(from, to) {
+    const url = this.baseUrl + '/api/user/addAsFriend';
+    return this.http.post(url, {from: from, to: to})
+      .map(
+        (res: Response) => {
+          return res.json();
         }
       );
   }

@@ -18,3 +18,62 @@
 
 <app-control-bar *ngIf="movieReady"></app-control-bar>
 
+<div class="container-fluid alert alert-danger" *ngIf="errFlag">
+  {{errMsg}}
+</div>
+
+<div class="container-fluid alert alert-success" *ngIf="sucFlag">
+  {{sucMsg}}
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading1">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+        Material List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="heading1">
+    <div class="card-body">
+      <table>
+        <tr *ngFor="let m of materialList">
+          <div class="container-fluid">
+            <span class="col-lg-2">Title: {{m.title.trim()}}</span>
+            <span class="col-lg-2">Content: {{m.content}}</span>
+            <span class="col-lg-2">Video: {{m.video}}</span>
+            <span class="col-lg-2">Audio: {{m.audio}}</span>
+            <span class="col-lg-2">Text: {{m.text}}</span>
+            <button class="btn btn-outline-primary" (click)="addAsFriend()">Add Poster As Friend</button>
+          </div>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading2">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+        Review List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2">
+    <div class="card-body">
+      <table>
+        <tr *ngFor="let m of reviewList">
+          <div class="container-fluid">
+            <span class="col-lg-4">Title: {{m.title.trim()}}</span>
+            <span class="col-lg-4">Content: {{m.content}}</span>
+            <button class="btn btn-outline-primary" (click)="addAsFriend()">Add Poster As Friend</button>
+          </div>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+

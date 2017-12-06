@@ -35,4 +35,12 @@ export class MaterialServiceClient {
         return res.json();
       });
   }
+
+  findAllMaterialByMovieId(id) {
+    const url = this.baseUrl + '/material/findAllMaterialByMovieId/' + id;
+    return this.http.get(url)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
 }

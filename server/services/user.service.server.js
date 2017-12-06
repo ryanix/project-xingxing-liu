@@ -23,6 +23,7 @@ module.exports = function (app) {
   app.post('/api/logout', logout);
   app.put('/api/user/:userId', updateUser);
   app.delete('/api/user/:userId', deleteUser);
+  app.post('/api/user/addAsFriend', addAsFriend);
   app.get('/api/users', findAllUsers);
   app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
   app.get('/auth/facebook/callback',
@@ -155,4 +156,17 @@ module.exports = function (app) {
       })
   }
 
+  function addAsFriend(req, res) {
+    const data = req.body;
+    const from = data.from;
+    const to = data.to;
+    userModel.findUserById(to)
+      .then( (u) => {
+        if (!u.friends.includes(from))
+        {
+          u.friends.push(from)
+        }
+        return u.save();
+      });
+  }
 }
