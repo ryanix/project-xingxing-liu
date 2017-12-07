@@ -44,4 +44,6 @@ module.exports = function(app) {
       res.send(body)
     })
   }
+
+  console.log('omdb server runing')
 }

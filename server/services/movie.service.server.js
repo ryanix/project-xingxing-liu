@@ -40,4 +40,6 @@ module.exports = function (app) {
     movieModel.addReview(review)
       .then( m => res.json(m))
   }
+
+  console.log('movie server runing')
 }

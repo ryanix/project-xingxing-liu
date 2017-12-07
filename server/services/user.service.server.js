@@ -193,4 +193,6 @@ module.exports = function (app) {
         res.json(result);
       });
   }
+
+  console.log('user server runing')
 }

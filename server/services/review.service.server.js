@@ -61,5 +61,5 @@ module.exports = function (app) {
     reviewModel.findByUserId(id)
       .then( result => res.json(result))
   }
-
+  console.log('review server runing')
 }

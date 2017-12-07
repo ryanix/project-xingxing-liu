@@ -59,5 +59,5 @@ module.exports = function (app) {
     materialModel.findByUserId(id)
       .then(result => res.json(result));
   }
-
+  console.log('material server runing')
 }

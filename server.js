@@ -63,4 +63,3 @@ app.get('*', function (req, res) {
 server.listen( port , () => console.log('Running'));
 
 
-// mlab heroku mongodb://<dbuser>:<dbpassword>@ds121896.mlab.com:21896/heroku_clkksqf0

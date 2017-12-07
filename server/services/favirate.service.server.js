@@ -1,4 +1,5 @@
 module.exports = function (app) {
+
   var favirateModel = require('../model/favirate/favirate.model.server');
 
   app.post('/collection/create', createCollection);
@@ -73,4 +74,6 @@ module.exports = function (app) {
         }
       )
   }
+
+  console.log('favirate server runing')
 }
