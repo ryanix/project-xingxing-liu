@@ -17,6 +17,8 @@ export class CollectionServiceClient {
     'findAllCollections': this.findAllCollections,
     'deleteCollection': this.deleteCollection,
     'addMovieToCollection': this.addMovieToCollection,
+    'removeMovieFromCollection': this.removeMovieFromCollection,
+    'findCollectoinDetail': this.findCollectoinDetail,
   };
 
   createCollection(fav) {
@@ -50,6 +52,26 @@ export class CollectionServiceClient {
   addMovieToCollection(movie, c) {
     const url = baseUrl + '/collection/addMovieToCollection/' + c._id;
     return this.http.post(url, movie)
+      .map(
+        (res: Response) => {
+          return res.json();
+        }
+      );
+  }
+
+  removeMovieFromCollection(mid, cid) {
+    const url = baseUrl + '/collection/removeMovieFromCollection/';
+    return this.http.post(url, {movie: mid, collection: cid})
+      .map(
+        (res: Response) => {
+          return res.json();
+        }
+      );
+  }
+
+  findCollectoinDetail(id) {
+    const url = baseUrl + '/collection/findCollectionDetail/' + id;
+    return this.http.get(url)
       .map(
         (res: Response) => {
           return res.json();

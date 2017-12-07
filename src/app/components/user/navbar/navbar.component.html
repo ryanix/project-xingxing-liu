@@ -1,12 +1,20 @@
-<div *ngIf="!user" id="unloggedIn" class="btn-group">
-  <a href="/login" class="btn btn-primary">Login</a>
-  <a href="/register" class="btn btn-secondary">Register</a>
-</div>
-<div id="loggedIn" *ngIf="user && user.userType==='1'">
-  <a href="/profile" class="btn btn-primary">Profile</a>
-  <a (click)="logout()" class="btn btn-danger">Log Out</a>
-</div>
-<div id="adminLoggedIn" *ngIf="user && user.userType==='0'">
-  <a href="/administrator" class="btn btn-primary">Profile</a>
-  <a (click)="logout()" class="btn btn-danger">Log Out</a>
+
+<div class="navbar-default navbar bg-info text-white">
+  <div class="row justify-content-around" style="width: 10%">
+    <a class="fa fa-arrow-left fa-2x" style="color: white;" (click)="goBack()"></a>
+    <a class="fa fa-arrow-right fa-2x" style="color: white;" (click)="goForward()"></a>
+  </div>
+
+  <div *ngIf="!user" id="unloggedIn" class="btn-group">
+    <a href="/login" class="btn btn-primary">Login</a>
+    <a href="/register" class="btn btn-secondary">Register</a>
+  </div>
+  <div id="loggedIn" *ngIf="user && user.userType==='1'">
+    <a href="/profile" class="btn btn-primary">Profile</a>
+    <a (click)="logout()" class="btn btn-danger">Log Out</a>
+  </div>
+  <div id="adminLoggedIn" *ngIf="user && user.userType==='0'">
+    <a href="/administrator" class="btn btn-primary">Profile</a>
+    <a (click)="logout()" class="btn btn-danger">Log Out</a>
+  </div>
 </div>

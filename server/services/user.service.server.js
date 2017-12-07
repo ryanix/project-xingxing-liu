@@ -24,6 +24,7 @@ module.exports = function (app) {
   app.put('/api/user/:userId', updateUser);
   app.delete('/api/user/:userId', deleteUser);
   app.post('/api/user/addAsFriend', addAsFriend);
+  app.get('/api/user/findUserById/:uid', findUserById);
   app.get('/api/users', findAllUsers);
   app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
   app.get('/auth/facebook/callback',
@@ -167,6 +168,15 @@ module.exports = function (app) {
           u.friends.push(from)
         }
         return u.save();
+      });
+  }
+
+
+  function findUserById(req, res) {
+    const id = req.params['uid']
+    userModel.retrieveUserInfo(id)
+      .then( result => {
+        res.json(result);
       });
   }
 }

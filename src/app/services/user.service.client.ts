@@ -26,6 +26,7 @@ export class UserServiceClient {
     'loggedIn': this.loggedIn,
     'logout': this.logout,
     'findAllUsers': this.findAllUsers,
+    'findUserById': this.findUserById,
     'addAsFriend': this.addAsFriend,
     'updateUser': this.updateUser,
     'deleteUser': this.deleteUser,
@@ -145,5 +146,13 @@ export class UserServiceClient {
           return res.json();
         }
       );
+  }
+
+  findUserById(id) {
+    const url = this.baseUrl + '/api/user/findUserById/' + id;
+    return this.http.get(url)
+      .map( (res: Response) => {
+        return res.json();
+      });
   }
 }

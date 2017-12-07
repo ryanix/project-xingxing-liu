@@ -48,7 +48,7 @@
         <form (submit)="updateMaterial()" *ngIf="material" #material="ngForm" class="container-fluid">
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" name="title" class="form-control" id="title" placeholder="Title" [(ngModel)]="movie.Title">
+            <input type="text" name="title" class="form-control" id="title" placeholder="Title" [(ngModel)]="movie.name">
           </div>
           <div class="form-group">
             <label for="content">Content</label>
@@ -82,7 +82,7 @@
         <form (submit)="updateReview()" *ngIf="review" #review="ngForm" class="container-fluid">
           <div class="form-group">
             <label for="title1">Title</label>
-            <input type="text" class="form-control" name="title1" id="title1" placeholder="Title" [(ngModel)]="movie.Title">
+            <input type="text" class="form-control" name="title1" id="title1" placeholder="Title" [(ngModel)]="movie.name">
           </div>
           <div class="form-group">
             <label for="content1">Content</label>

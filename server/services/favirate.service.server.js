@@ -3,12 +3,30 @@ module.exports = function (app) {
 
   app.post('/collection/create', createCollection);
   app.post('/collection/addMovieToCollection/:cid', addMovieToCollection);
+  app.post('/collection/removeMovieFromCollection/', removeMovieFromCollection);
   app.get('/collection/findAllCollection/:userId', findAllCollection);
-  app.delete('/collection/deleteCollection', deleteCollection);
+  app.get('/collection/findCollectionDetail/:cid', findCollectoinDetail);
+  app.delete('/collection/deleteCollection/:cid', deleteCollection);
+
+  function removeMovieFromCollection(req, res) {
+    const data = req.body;
+    const mid = data.movie;
+    const cid = data.collection;
+    favirateModel.removeMovieFromCollection(mid, cid)
+      .then( result => res.json(result))
+  }
+
+  function findCollectoinDetail(req, res) {
+    const cid = req.params['cid'];
+    favirateModel.findCollectoinDetail(cid)
+      .then(
+        result => res.json(result)
+      )
+  }
 
   function addMovieToCollection(req, res) {
-    const movie = req.body
-    const cid = req.params['cid']
+    const movie = req.body;
+    const cid = req.params['cid'];
     favirateModel.addMovieToCollection(movie, cid)
       .then(
         result => {
@@ -39,8 +57,7 @@ module.exports = function (app) {
   }
 
   function deleteCollection(req, res) {
-    const c = req.body;
-    const id = c._id;
+    const id = req.params['cid'];
     favirateModel.deleteFavirate(id)
       .then(
         result => {

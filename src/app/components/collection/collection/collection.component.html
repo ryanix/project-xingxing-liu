@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid card row" *ngIf="collection">
+  <div class="card-body">
+    <h4 class="card-title">{{collection.name}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{collection.dateCreated | date: 'MM/dd/yyyy'}}</h6>
+  </div>
+  <button *ngIf="user && user._id === collection.userId" class="btn btn-danger" (click)="deleteCollection()">Delete Collection</button>
+</div>
+
+<p></p>
+<p></p>
+<p></p>
+
+
+<h3>Movies</h3>
+<div class="container-fluid row justify-content-around" *ngIf="collection">
+  <div class="col-lg-3 card" *ngFor="let m of collection.movies">
+    <div class="card-body">
+      <h4 class="card-title">{{m.name}}</h4>
+      <a href="/searchDetail/{{m.omdbId}}" class="card-link">Movie link</a>
+      <button *ngIf="user && user._id === collection.userId" class="btn btn-danger" (click)="removeMovieFromCollection(m._id)">Delete Movie</button>
+    </div>
+  </div>
+</div>
+
+
+

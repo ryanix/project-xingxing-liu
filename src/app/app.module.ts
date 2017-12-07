@@ -28,6 +28,8 @@ import { MaterialComponent } from './components/movie/material/material.componen
 import {MovieServiceClient} from './services/movie.service.client';
 import {MaterialServiceClient} from './services/material.service.client';
 import {ReviewServiceClient} from './services/review.service.client';
+import {UserPageComponent} from './components/user/user-page/user-page.component';
+import { CollectionComponent } from './components/collection/collection/collection.component';
 
 @NgModule({
   // Declare components here
@@ -45,7 +47,9 @@ import {ReviewServiceClient} from './services/review.service.client';
     UserDetailComponent,
     NavbarComponent,
     ControlBarComponent,
-    MaterialComponent
+    MaterialComponent,
+    UserPageComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,

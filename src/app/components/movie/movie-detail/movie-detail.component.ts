@@ -16,16 +16,12 @@ export class MovieDetailComponent implements OnInit {
 
   movieDetail: any;
   keys: any;
-  title;
   newM;
   movieReady;
   reviewList;
   materialList;
 
-  errFlag: boolean;
-  errMsg = 'Please Login In first.';
-  sucFlag: boolean;
-  sucMsg = 'Add sucessfully';
+
 
   constructor(
     private omdbService: OmdbServiceClient,
@@ -39,7 +35,6 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      this.title = params['title'];
       const id = params['id'];
       this.omdbService.searchById(id)
         .subscribe( (u) => {
@@ -80,16 +75,5 @@ export class MovieDetailComponent implements OnInit {
       });
   }
 
-  addAsFriend(from) {
-    if (!this.sharedService.user) {
-      this.errFlag = true;
-      this.sucFlag = false;
-    } else {
-      this.userService.addAsFriend(from, this.sharedService.user._id)
-        .subscribe( u => {
-          this.errFlag = false;
-          this.sucFlag = true;
-        });
-    }
-  }
+
 }

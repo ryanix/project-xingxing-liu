@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 import {SharedService} from '../../../services/shared.service';
 import {UserServiceClient} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
@@ -12,6 +13,7 @@ export class NavbarComponent implements OnInit {
 
   user;
   constructor(
+    private _location: Location,
     private sharedService: SharedService,
     private userService: UserServiceClient,
     private router: Router,
@@ -28,5 +30,13 @@ export class NavbarComponent implements OnInit {
         this.sharedService = null;
         this.router.navigate(['/']);
       });
+  }
+
+  goBack() {
+    this._location.back();
+  }
+
+  goForward() {
+    this._location.forward();
   }
 }

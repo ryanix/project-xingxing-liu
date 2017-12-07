@@ -13,7 +13,9 @@ import {RegisterComponent} from './components/user/register/register.component';
 import {MovieListComponent} from './components/movie/movie-list/movie-list.component';
 import {MovieDetailComponent} from './components/movie/movie-detail/movie-detail.component';
 import {AuthGuard} from './services/auth-guard.service';
-import {AdminComponent} from "./components/user/admin/admin.component";
+import {AdminComponent} from './components/user/admin/admin.component';
+import {UserPageComponent} from './components/user/user-page/user-page.component';
+import {CollectionComponent} from "./components/collection/collection/collection.component";
 
 const APP_ROUTES: Routes = [
   {path: '', component: HomePageComponent},
@@ -22,7 +24,9 @@ const APP_ROUTES: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'administrator', component: AdminComponent, canActivate: [AuthGuard]},
   {path: 'searchResults/:title', component: MovieListComponent},
-  {path: 'searchDetail/:id/:title', component: MovieDetailComponent},
+  {path: 'searchDetail/:id', component: MovieDetailComponent},
+  {path: 'userPage/:uid', component: UserPageComponent},
+  {path: 'collection/:cid', component: CollectionComponent},
   {path: 'apitest', component : HomeComponent},
   {path: 'test', component: TestComponent},
 ];

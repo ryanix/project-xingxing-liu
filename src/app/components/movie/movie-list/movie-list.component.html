@@ -1,10 +1,7 @@
-<div class="navbar-default navbar bg-info text-white">
-  <a class="fa fa-arrow-left fa-2x" style="color: white" routerLink="/"></a>
-  <app-navbar></app-navbar>
-</div>
+<app-navbar></app-navbar>
 
 <div *ngIf="result" class="row">
-  <div *ngFor="let r of result"  class="col-md-4 col-lg-4 movie_item" routerLink="/searchDetail/{{r.imdbID}}/{{title}}">
+  <div *ngFor="let r of result"  class="col-md-4 col-lg-4 movie_item" routerLink="/searchDetail/{{r.imdbID}}">
     <ul>
       <li>Title: {{r.Title}}</li>
       <li>year: {{r.Year}}</li>

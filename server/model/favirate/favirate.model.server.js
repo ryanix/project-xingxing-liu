@@ -11,8 +11,27 @@ FavirateModel.updateFavirate = updateFavirate;
 FavirateModel.deleteFavirate = deleteFavirate;
 FavirateModel.findAllCollections = findAllCollections;
 FavirateModel.addMovieToCollection = addMovieToCollection;
+FavirateModel.findCollectoinDetail = findCollectoinDetail;
+FavirateModel.removeMovieFromCollection = removeMovieFromCollection;
+
+
 
 module.exports = FavirateModel;
+
+function removeMovieFromCollection(mid, cid) {
+  return FavirateModel.findByFId(cid)
+    .then( c => {
+      const index = c.movies.indexOf(mid);
+      c.movies.splice(index, 1)
+      return c.save()
+    })
+}
+
+function findCollectoinDetail(cid) {
+  return FavirateModel.findByFId(cid)
+    .populate('movies')
+    .exec();
+}
 
 
 function createFavirate(fav) {
@@ -53,7 +72,7 @@ function addMovieToCollection(movie, cid) {
   return findByFId(cid)
     .then(
       result => {
-        if (!result.movies.include(movie._id)){
+        if (!result.movies.includes(movie._id)){
           result.movies.push(movie._id)
         }
         return result.save()
