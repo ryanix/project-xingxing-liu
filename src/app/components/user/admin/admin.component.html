@@ -1,109 +1,188 @@
 <div class="navbar navbar-default bg-info text-white">
-  <a routerLink=""><i class="fa fa-arrow-left"></i></a>
-  <label>Administrator</label>
+  <a routerLink=""><i class="fa fa-arrow-left fa-2x" style="color: white"></i></a>
+  <label>Profile</label>
 </div>
-<div>
-  <div id="accordion" role="tablist">
-    <div class="card">
-      <div class="card-header" role="tab" id="headingOne">
-        <h5 class="mb-0">
-          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Profile
-          </a>
-        </h5>
-      </div>
-
-      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-        <div class="card-body">
-          <form (ngSubmit) = "update()" #f="ngForm">
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" placeholder="walice">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="email address" name="email" [(ngModel)]="user.email">
-            </div>
-
-
-            <div class="form-group">
-              <label for="first-name">First Name</label>
-              <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
-            </div>
-
-            <div class="form-group">
-              <label for="last-name">Last Name</label>
-              <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" class="form-control" placeholder="123-345-5678">
-            </div>
-
-            <div class="form-group">
-              <label for="date">First Name</label>
-              <input disabled [ngModel]="user.dateCreated | date: 'MM/dd/yyyy HH:mm:ss'" name="date" type="text" class="form-control" id="date">
-            </div>
-
-
-            <p> </p>
-            <button class="btn btn-primary btn-block"
-                    type="submit"
-                    [disabled]="!f.valid">Update</button>
-            <p> </p>
-          </form>
-        </div>
-      </div>
+<div class="container" *ngIf="user">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    Update Failed! Please try again later.
+  </div>
+  <div *ngIf="sucFlag"
+       class="alert alert-success">
+    Update Succeed!
+  </div>
+  <form (ngSubmit) = "update()" #f="ngForm">
+    <div class="input-group row">
+      <label class="col-lg-3" for="username">Username</label>
+      <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" placeholder="walice">
     </div>
 
-    <div class="card">
-      <div class="card-header" role="tab" id="headingTwo">
-        <h5 class="mb-0">
-          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            UserList
-          </a>
-        </h5>
-      </div>
-      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-        <div class="card-body">
-          <ul>
-            <li *ngFor="let user of userList">
-             <label>{{user.username}}</label>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="input-group row">
+      <label class="col-lg-3" for="email">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="email address" name="email" [(ngModel)]="user.email">
     </div>
 
-    <div class="card">
-      <div class="card-header" role="tab" id="headingThree">
-        <h5 class="mb-0">
-          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Collection List
-          </a>
-        </h5>
-      </div>
-      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-        </div>
-      </div>
+
+    <div class="input-group row">
+      <label class="col-lg-3" for="first-name">First Name</label>
+      <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
     </div>
 
-    <div class="card">
-      <div class="card-header" role="tab" id="headingFour">
-        <h5 class="mb-0">
-          <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            Review List
-          </a>
-        </h5>
+    <div class="input-group row">
+      <label class="col-lg-3" for="last-name">Last Name</label>
+      <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+    </div>
+
+    <div class="input-group row">
+      <label class="col-lg-3" for="phone">Phone</label>
+      <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" class="form-control" placeholder="123-345-5678">
+    </div>
+
+    <div class="input-group row">
+      <label class="col-lg-3" for="date">First Name</label>
+      <input disabled [ngModel]="user.dateCreated | date: 'MM/dd/yyyy HH:mm:ss'" name="date" type="text" class="form-control" id="date">
+    </div>
+
+
+    <p> </p>
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Update</button>
+    <p> </p>
+  </form>
+  <p></p>
+  <button class="btn btn-danger btn-block" (click)="logout()">Logout</button>
+</div>
+
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading11">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+        Collection List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse11" class="collapse" role="tabpanel" aria-labelledby="heading11">
+    <div *ngFor="let m of collectionList" class="container-fluid justify-content-between row">
+      <h4 class="card-title col-lg-3">{{m.name}}</h4>
+      <a href="/collection/{{m._id}}" class="card-link">Collection link</a>
+      <button class="btn btn-outline-danger" (click)="deleteCollection(m)">Delete Collection</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading1">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+        Material List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="heading1">
+    <div class="container-fluid justify-content-between" *ngFor="let m of materialList">
+      <h4>Title: {{m.title}}</h4>
+      <h6>Content: {{m.content}}</h6>
+      <h6>Video: {{m.video}}</h6>
+      <h6>Audio: {{m.audio}}</h6>
+      <h6>Text: {{m.text}}</h6>
+      <button class="btn btn-outline-danger btn-block" (click)="deleteMaterial(m._id)">Delete Material</button>
+      <hr/>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading2">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+        Review List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2">
+    <div class="container-fluid justify-content-between"  *ngFor="let m of reviewList">
+      <h4 >Title: {{m.title}}</h4>
+      <a >Content: {{m.content}}</a>
+      <button class="btn btn-outline-danger btn-block" (click)="deleteReview(m._id)">Delete Review</button>
+      <hr/>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading4">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+        User List
+      </a>
+    </h5>
+  </div>
+  <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="heading4">
+    <hr/>
+    <button type="button" class="btn btn-outline-info btn-block" data-toggle="modal" data-target="#exampleModal">
+      Add A New User
+    </button>
+    <hr/>
+    <div class="container-fluid justify-content-between row"  *ngFor="let m of userList">
+      <a class="col-lg-3" routerLink="/userPage/{{m._id}}">Username: {{m.username}}</a>
+      <span class="row btn-group">
+        <button [disabled]="m.userType == 0" class="btn btn-primary" (click)="upgrade(m)">Admin</button>
+        <button [disabled]="m.userType == 1" class="btn btn-primary" (click)="downgrade(m)">Normal User</button>
+      </span>
+      <span>Created On {{m.dateCreated | date: 'MM/dd/yy'}}</span>
+      <button class="btn btn-outline-danger" (click)="deleteUser(m._id)">Delete User</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+      <div class="modal-body">
+        <div *ngIf="errFlag"
+             class="alert alert-danger">
+          {{errMsg}}
         </div>
+        <div class="input-group row">
+          <label class="col-lg-3">Username</label>
+          <input [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="username">
+        </div>
+        <div class="input-group row">
+          <label class="col-lg-3">Password</label>
+          <input [(ngModel)]="password" name="username" type="text" class="form-control" placeholder="password">
+        </div>
+        <div class="input-group row">
+          <label class="col-lg-3">First Name</label>
+          <input [(ngModel)]="firstName" name="username" type="text" class="form-control" placeholder="first name">
+        </div>
+        <div class="input-group row">
+          <label class="col-lg-3">Last Name</label>
+          <input [(ngModel)]="lastName" name="username" type="text" class="form-control" placeholder="last name">
+        </div>
+        <div class="input-group row">
+          <label class="col-lg-3">Email</label>
+          <input [(ngModel)]="email" name="username" type="text" class="form-control" placeholder="email">
+        </div>
+        <div class="input-group row">
+          <label class="col-lg-3">phone</label>
+          <input [(ngModel)]="phone" name="username" type="text" class="form-control" placeholder="phone number">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="create()">Create</button>
       </div>
     </div>
   </div>

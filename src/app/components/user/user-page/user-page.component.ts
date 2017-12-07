@@ -38,7 +38,6 @@ export class UserPageComponent implements OnInit {
       this.userService.findUserById(id)
         .subscribe( u => {
           this.user = u;
-          console.log('userpage line 41', u);
         });
     });
   }

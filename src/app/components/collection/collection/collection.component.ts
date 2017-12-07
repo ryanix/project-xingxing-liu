@@ -28,7 +28,6 @@ export class CollectionComponent implements OnInit {
         .subscribe(
           result => {
             this.collection = result;
-            console.log('collection line 26 ====================', result);
           }
         );
     });

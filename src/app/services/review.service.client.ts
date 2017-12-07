@@ -17,7 +17,25 @@ export class ReviewServiceClient {
     'findOrCreate': this.findOrCreate,
     'updateReview': this.updateReview,
     'findAllReviewByMovieId': this.findAllReviewByMovieId,
+    'fingAllReviewByUserId': this.fingAllReviewByUserId,
+    'deleteReview': this.deleteReview,
+    'findAllReview': this.findAllReview,
   };
+
+  findAllReview() {
+    return this.http.get( this.baseUrl + '/review/findAllReview')
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  deleteReview(id) {
+    const url = this.baseUrl + '/review/deleteReview/' + id;
+    return this.http.delete(url)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
 
   findOrCreate(review) {
     const url = this.baseUrl + '/review/findOrCreate';
@@ -39,6 +57,14 @@ export class ReviewServiceClient {
 
   findAllReviewByMovieId(id) {
     const url = this.baseUrl + '/review/findAllReviewByMovieId/' + id;
+    return this.http.get(url)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  fingAllReviewByUserId(id) {
+    const url = this.baseUrl + '/review/fingAllReviewByUserId/' + id;
     return this.http.get(url)
       .map((res: Response) => {
         return res.json();

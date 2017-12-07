@@ -15,11 +15,19 @@ export class CollectionServiceClient {
   api = {
     'createCollection': this.createCollection,
     'findAllCollections': this.findAllCollections,
+    'fetchAllCollection': this.fetchAllCollection,
     'deleteCollection': this.deleteCollection,
     'addMovieToCollection': this.addMovieToCollection,
     'removeMovieFromCollection': this.removeMovieFromCollection,
     'findCollectoinDetail': this.findCollectoinDetail,
   };
+
+  fetchAllCollection() {
+    return this.http.get( baseUrl + '/collection/fetchAllCollection')
+      .map( (res: Response) => {
+        return res.json();
+      });
+  }
 
   createCollection(fav) {
     const url = baseUrl + '/collection/create';

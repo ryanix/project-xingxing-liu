@@ -4,9 +4,17 @@ module.exports = function (app) {
   app.post('/collection/create', createCollection);
   app.post('/collection/addMovieToCollection/:cid', addMovieToCollection);
   app.post('/collection/removeMovieFromCollection/', removeMovieFromCollection);
+  app.get('/collection/fetchAllCollection', fetchAllCollection);
   app.get('/collection/findAllCollection/:userId', findAllCollection);
   app.get('/collection/findCollectionDetail/:cid', findCollectoinDetail);
   app.delete('/collection/deleteCollection/:cid', deleteCollection);
+
+  function fetchAllCollection(req, res) {
+    favirateModel.find({})
+      .then( result => {
+        res.json(result)
+      })
+  }
 
   function removeMovieFromCollection(req, res) {
     const data = req.body;

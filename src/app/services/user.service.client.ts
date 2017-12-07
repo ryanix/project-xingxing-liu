@@ -30,7 +30,23 @@ export class UserServiceClient {
     'addAsFriend': this.addAsFriend,
     'updateUser': this.updateUser,
     'deleteUser': this.deleteUser,
+    'findAllFriends': this.findAllFriends,
+    'deleteFriend': this.deleteFriend,
   };
+
+  deleteFriend(fid, did) {
+    return this.http.post(this.baseUrl + '/api/user/deleteFriend', {from: fid, deleted: did})
+      .map( (res: Response) => {
+        return res.json();
+      });
+  }
+
+  findAllFriends(uid) {
+    return this.http.get(this.baseUrl + '/api/user/findUserById/' + uid)
+      .map( (res: Response) => {
+        return res.json();
+      });
+  }
 
   login(username: String, password: String) {
     this.options.withCredentials = true;

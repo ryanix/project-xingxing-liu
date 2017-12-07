@@ -4,8 +4,25 @@ module.exports = function (app) {
 
   app.post('/material/findOrCreate', findOrCreate);
   app.put('/material/updateMaterial', updateMaterial);
+  app.get('/material/findAllMaterial', findAllMaterial);
   app.get('/material/findAllMaterialByMovieId/:mid', findAllMaterialByMovieId);
+  app.get('/material/fingAllMaterialByUserId/:uid', fingAllMaterialByUserId);
+  app.delete('/material/deleteMaterial/:mid', deleteMaterial);
 
+  function findAllMaterial(req, res) {
+    materialModel.find({})
+      .then( result => {
+        res.json(result)
+      })
+  }
+
+  function deleteMaterial(req, res) {
+    const id = req.params['mid'];
+    materialModel.deleteMaterial(id)
+      .then(result => {
+        res.json(result);
+      })
+  }
   function findOrCreate(req, res) {
     const material = req.body;
     materialModel.findByUMId(material.userId, material.movieId)
@@ -35,6 +52,12 @@ module.exports = function (app) {
     const id = req.params['mid'];
     materialModel.findByMovieId(id)
       .then( result => res.json(result));
+  }
+
+  function fingAllMaterialByUserId(req, res) {
+    const id = req.params['uid'];
+    materialModel.findByUserId(id)
+      .then(result => res.json(result));
   }
 
 }

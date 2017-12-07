@@ -24,6 +24,7 @@ module.exports = function (app) {
   app.put('/api/user/:userId', updateUser);
   app.delete('/api/user/:userId', deleteUser);
   app.post('/api/user/addAsFriend', addAsFriend);
+  app.post('/api/user/deleteFriend', deleteFriend);
   app.get('/api/user/findUserById/:uid', findUserById);
   app.get('/api/users', findAllUsers);
   app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
@@ -32,6 +33,19 @@ module.exports = function (app) {
       successRedirect: '/profile',
       failureRedirect: '/login'
     }));
+
+  function deleteFriend(req, res) {
+    const data = req.body;
+    const fid = data.from;
+    const did = data.deleted;
+    userModel.findUserById(from)
+      .then(u => {
+          const index = u.friends.indexOf(did)
+          u.friends.splice(index, 1)
+          return u.save()
+        }
+      )
+  }
 
   function login(req, res) {
     var user = req.user;
