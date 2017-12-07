@@ -1,7 +1,4 @@
-<div class="navbar navbar-default bg-info text-white">
-  <a routerLink=""><i class="fa fa-arrow-left fa-2x" style="color: white"></i></a>
-  <label>Profile</label>
-</div>
+<app-navbar></app-navbar>
 <div class="container" *ngIf="user">
   <div *ngIf="errorFlag"
        class="alert alert-danger">
@@ -66,7 +63,7 @@
   <div id="collapse11" class="collapse" role="tabpanel" aria-labelledby="heading11">
     <div *ngFor="let m of collectionList" class="container-fluid justify-content-between row">
       <h4 class="card-title col-lg-3">{{m.name}}</h4>
-      <a href="/collection/{{m._id}}" class="card-link">Collection link</a>
+      <a routerLink="/collection/{{m._id}}" class="card-link">Collection link</a>
       <button class="btn btn-outline-danger" (click)="deleteCollection(m)">Delete Collection</button>
     </div>
   </div>

@@ -4,6 +4,7 @@ import {UserServiceClient} from '../../../services/user.service.client';
 import {CollectionServiceClient} from '../../../services/collection.service.client';
 import {MaterialServiceClient} from '../../../services/material.service.client';
 import {ReviewServiceClient} from '../../../services/review.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -38,6 +39,7 @@ export class AdminComponent implements OnInit {
     private collectionService: CollectionServiceClient,
     private materialService: MaterialServiceClient,
     private reviewService: ReviewServiceClient,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -158,6 +160,13 @@ export class AdminComponent implements OnInit {
                 });
             });
         }
+      });
+  }
+
+  logout() {
+    this.userService.logout()
+      .subscribe( (data: any) => {
+        this.router.navigate(['']);
       });
   }
 }

@@ -18,7 +18,7 @@
   <div class="col-lg-3 card" *ngFor="let m of collection.movies">
     <div class="card-body">
       <h4 class="card-title">{{m.name}}</h4>
-      <a href="/searchDetail/{{m.omdbId}}" class="card-link">Movie link</a>
+      <a routerLink="/searchDetail/{{m.omdbId}}" class="card-link">Movie link</a>
       <button *ngIf="user && user._id === collection.userId" class="btn btn-danger" (click)="removeMovieFromCollection(m._id)">Delete Movie</button>
     </div>
   </div>

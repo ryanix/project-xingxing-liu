@@ -6,15 +6,15 @@
   </div>
 
   <div *ngIf="!user" id="unloggedIn" class="btn-group">
-    <a href="/login" class="btn btn-primary">Login</a>
-    <a href="/register" class="btn btn-secondary">Register</a>
+    <a routerLink="/login" class="btn btn-primary">Login</a>
+    <a routerLink="/register" class="btn btn-secondary">Register</a>
   </div>
   <div id="loggedIn" *ngIf="user && user.userType == 1">
-    <a href="/profile" class="btn btn-primary">Profile</a>
+    <a routerLink="/profile" class="btn btn-primary">Profile</a>
     <a (click)="logout()" class="btn btn-danger">Log Out</a>
   </div>
   <div id="adminLoggedIn" *ngIf="user && user.userType == 0">
-    <a href="/administrator" class="btn btn-primary">Profile</a>
+    <a routerLink="/administrator" class="btn btn-primary">Profile</a>
     <a (click)="logout()" class="btn btn-danger">Log Out</a>
   </div>
 </div>
