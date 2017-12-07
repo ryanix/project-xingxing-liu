@@ -404,7 +404,7 @@ var HomePageComponent = (function () {
         this.userService.logout()
             .subscribe(function (data) {
             _this.user = null;
-            _this.sharedService = null;
+            _this.sharedService.user = null;
             _this.router.navigate(['/']);
         });
     };
@@ -1296,6 +1296,8 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.logout = function () {
         var _this = this;
+        this.user = null;
+        this.sharedService.user = null;
         this.userService.logout()
             .subscribe(function (data) {
             _this.router.navigate(['']);
@@ -1539,10 +1541,10 @@ var NavbarComponent = (function () {
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
+        this.user = null;
+        this.sharedService.user = null;
         this.userService.logout()
             .subscribe(function (data) {
-            _this.user = null;
-            _this.sharedService = null;
             _this.router.navigate(['/']);
         });
     };
@@ -1653,6 +1655,8 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.logout = function () {
         var _this = this;
+        this.user = null;
+        this.sharedService.user = null;
         this.userService.logout()
             .subscribe(function (data) {
             _this.router.navigate(['/login']);

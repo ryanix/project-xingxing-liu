@@ -28,7 +28,7 @@ export class HomePageComponent implements OnInit {
    this.userService.logout()
      .subscribe( (data: any) => {
        this.user = null;
-       this.sharedService = null;
+       this.sharedService.user = null;
        this.router.navigate(['/']);
      });
   }

@@ -24,10 +24,10 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.user = null;
+    this.sharedService.user = null;
     this.userService.logout()
       .subscribe( (data: any) => {
-        this.user = null;
-        this.sharedService = null;
         this.router.navigate(['/']);
       });
   }
