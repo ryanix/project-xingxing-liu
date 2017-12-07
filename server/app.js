@@ -7,12 +7,12 @@
 // params is part of the request. any variables in the path will be available as a a map in params
 
 module.exports = function (app) {
+  var db = require('./model/models.server');
   require('./services/omdb.service.server')(app);
   require('./services/user.service.server')(app);
   require('./services/favirate.service.server')(app);
   require('./services/movie.service.server')(app);
   require('./services/material.service.server')(app);
   require('./services/review.service.server')(app);
-  var db = require('./model/models.server');
 };
 
