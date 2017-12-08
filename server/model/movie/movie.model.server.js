@@ -17,7 +17,7 @@ module.exports = MovieModel
 function addReview(review) {
   return MovieModel.findByMId(review.movieId)
     .then( u => {
-      if(!u.review.includes(material._id)) {
+      if(!u.review.indexOf(material._id)) {
         u.review.push(material._id);
       }
       return u.save();
@@ -27,7 +27,7 @@ function addReview(review) {
 function addMaterial(material) {
   return MovieModel.findByMId(material.movieId)
     .then( u => {
-      if(!u.materials.includes(material._id)) {
+      if(!u.materials.indexOf(material._id)) {
         u.materials.push(material._id);
       }
       return u.save();

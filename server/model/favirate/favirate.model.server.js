@@ -72,7 +72,7 @@ function addMovieToCollection(movie, cid) {
   return findByFId(cid)
     .then(
       result => {
-        if (!result.movies.includes(movie._id)){
+        if (!result.movies.indexOf(movie._id)){
           result.movies.push(movie._id)
         }
         return result.save()

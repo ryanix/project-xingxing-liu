@@ -118,9 +118,9 @@
     </h5>
   </div>
   <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="heading4">
-          <div class="container-fluid justify-content-between row"  *ngFor="let m of friendList">
-            <span routerLink="/userPage/{{m._id}}">Title: {{m.username}}</span>
-            <span>Content: {{m.dateCreated | date: 'mm:dd:yy'}}</span>
+          <div class="container-fluid justify-content-between row justify-content-center"  *ngFor="let m of friendList">
+            <a routerLink="/userPage/{{m._id}}" style="padding-left: 1%;">{{m.username}}</a>
+            <span>{{m.dateCreated | date: 'MM/dd/yy'}}</span>
             <button class="btn btn-outline-danger" (click)="deleteFriend(m._id)">Delete Friend</button>
           </div>
     </div>

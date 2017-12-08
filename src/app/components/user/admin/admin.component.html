@@ -124,7 +124,7 @@
     </button>
     <hr/>
     <div class="container-fluid justify-content-between row"  *ngFor="let m of userList">
-      <a class="col-lg-3" routerLink="/userPage/{{m._id}}">Username: {{m.username}}</a>
+      <a class="col-lg-3" routerLink="/userPage/{{m._id}}" style="padding-left: 1%;">Username: {{m.username}}</a>
       <span class="row btn-group">
         <button [disabled]="m.userType == 0" class="btn btn-primary" (click)="upgrade(m)">Admin</button>
         <button [disabled]="m.userType == 1" class="btn btn-primary" (click)="downgrade(m)">Normal User</button>

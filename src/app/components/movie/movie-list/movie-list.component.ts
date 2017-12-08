@@ -13,7 +13,7 @@ export class MovieListComponent implements OnInit {
   title: String;
   result: any;
   user;
-  page;
+  page = 1;
   constructor(
     private omdbService: OmdbServiceClient,
     private route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class MovieListComponent implements OnInit {
   }
 
   searchOnPageNumber(page) {
-    if (page < 0 || page > 10) {
+    if (page <= 1 || page >= 10) {
       return;
     }
     this.page = page;

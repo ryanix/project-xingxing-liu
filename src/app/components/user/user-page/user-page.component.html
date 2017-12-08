@@ -59,7 +59,7 @@
         <td class="col-sm-3">Number Of Collection</td>
         </thead>
         <tr *ngFor="let f of user.friends" routerLink="/userPage/{{f._id}}">
-          <td class="col-sm-3">{{f.name}}</td>
+          <td class="col-sm-3">   {{f.username}}</td>
           <td class="col-sm-3">{{f.dateCreated | date: 'MM/dd/yyyy'}}</td>
           <td class="col-sm-3">{{f.favirates.length}}</td>
         </tr>

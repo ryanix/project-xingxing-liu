@@ -38,11 +38,12 @@ module.exports = function (app) {
     const data = req.body;
     const fid = data.from;
     const did = data.deleted;
-    userModel.findUserById(from)
+    userModel.findUserById(fid)
       .then(u => {
           const index = u.friends.indexOf(did)
           u.friends.splice(index, 1)
-          return u.save()
+          u.save()
+          res.json(u)
         }
       )
   }
@@ -177,11 +178,12 @@ module.exports = function (app) {
     const to = data.to;
     userModel.findUserById(to)
       .then( (u) => {
-        if (!u.friends.includes(from))
+        if (!u.friends.indexOf(from))
         {
           u.friends.push(from)
         }
-        return u.save();
+        u.save();
+        res.json(u)
       });
   }
 

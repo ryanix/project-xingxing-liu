@@ -108,8 +108,10 @@ export class ProfileComponent implements OnInit {
   deleteFriend(id) {
     this.userService.deleteFriend(this.user._id, id)
       .subscribe( u => {
+        console.log('--------------------', u)
         this.userService.findUserById(this.user._id)
           .subscribe( r => {
+            console.log('======================', r)
             this.friendList = r.friends;
           });
       });
